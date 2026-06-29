@@ -2,6 +2,117 @@
 <h2>Nim : 101230065</h2>
 <h2>Kelas : TF23A</h2>
 
+---
+
+# ParselKu — Aplikasi Pemesanan Parsel Online
+
+**ParselKu** adalah aplikasi web berbasis **Laravel 9** untuk pemesanan parsel/hampers secara online. Aplikasi ini dikembangkan sebagai project pembelajaran dengan arsitektur hybrid — Laravel sebagai backend yang melayani Blade views, sementara seluruh logika bisnis berjalan secara client-side menggunakan **localStorage**.
+
+---
+
+## Fitur Utama
+
+### 🏠 Halaman Publik
+| Halaman | Deskripsi |
+|---------|-----------|
+| **Beranda** (`/`) | Hero section, fitur unggulan, statistik, preview produk |
+| **Produk** (`/produk`) | Katalog 6 jenis parsel (Lebaran, Ultah, Sehat, Valentine, Pernikahan, Baby Gift) dengan indikator stok real-time |
+| **Pesan** (`/pesan`) | Form pemesanan dengan pilihan produk, data pelanggan, kartu ucapan (live preview), dan metode pembayaran (Transfer Bank / QRIS / COD) |
+| **Lacak** (`/lacak`) | Tracking pesanan berdasarkan nomor order, timeline status otomatis, dan rating bintang |
+| **Kontak** (`/kontak`) | Informasi kontak, alamat, WhatsApp, Instagram |
+
+### 🔐 Autentikasi (Client-Side via localStorage)
+- **Login** (`/login`) — Demo: `admin/admin123`, `user/user123`
+- **Register** (`/register`) — Pendaftaran pengguna baru
+- Role-based access: **Admin** dan **User**
+
+### 👑 Admin Panel
+| Halaman | Deskripsi |
+|---------|-----------|
+| **Dashboard** (`/admin/dashboard`) | Kartu statistik, grafik pendapatan (Chart.js 7 hari), tabel pesanan terbaru |
+| **Pesanan** (`/admin/orders`) | Manajemen pesanan dengan update status inline (pending → processing → shipped → delivered), filter, dan detail modal |
+| **Produk** (`/admin/products`) | CRUD produk (tambah/edit/hapus), upload foto via FileReader |
+
+### 👤 User Dashboard
+- **Dashboard** (`/user/dashboard`) — Daftar pesanan user dengan status dan rating
+- **Riwayat** (`/user/orders`) — Riwayat pemesanan user
+
+---
+
+## Tech Stack
+
+| Teknologi | Kegunaan |
+|-----------|----------|
+| **Laravel 9** | Framework backend — routing, Blade templating |
+| **PHP 8.0+** | Bahasa pemrograman backend |
+| **Bootstrap 5.3** | CSS framework untuk UI responsif |
+| **Font Awesome 6** | Ikon |
+| **Chart.js** | Grafik pendapatan di admin dashboard |
+| **localStorage** | Penyimpanan data client-side (auth, produk, pesanan) |
+
+---
+
+## Cara Menjalankan
+
+```bash
+# Clone repositori
+git clone https://github.com/Shielakaa664/belajar-laravel.git
+cd belajar-laravel
+
+# Install dependencies
+composer install
+
+# Copy environment
+cp .env.example .env
+php artisan key:generate
+
+# Jalankan development server
+php artisan serve
+```
+
+Akses di `http://localhost:8000`
+
+---
+
+## Testing
+
+```bash
+vendor/bin/phpunit
+```
+
+---
+
+## Struktur Direktori Utama
+
+```
+app/
+├── Http/
+│   └── Controllers/     → AuthController, ProductController, OrderController, dll.
+├── Models/               → User model
+resources/
+└── views/
+    ├── admin/            → Dashboard, orders, products (admin panel)
+    ├── user/             → Dashboard, orders (user panel)
+    ├── auth/             → Login, register
+    ├── partials/         → Navbar
+    ├── home.blade.php    → Beranda
+    ├── products.blade.php → Katalog produk
+    ├── order.blade.php   → Form pemesanan
+    ├── tracking.blade.php → Lacak pesanan
+    └── contact.blade.php → Kontak
+routes/
+├── web.php              → Route publik, auth, admin, user
+└── api.php              → Route API (default Sanctum)
+```
+
+---
+
+**Dosen Pengampu:** —  
+**Mata Kuliah:** Pemrograman Web / Framework  
+**Tahun Akademik:** 2024/2025
+
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
